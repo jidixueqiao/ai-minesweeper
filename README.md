@@ -1,4 +1,3 @@
-````markdown:README.md
 # AI Minesweeper 智能扫雷
 
 一个现代化的扫雷游戏，使用 Vue 3 + TypeScript + Vite 构建。
@@ -38,7 +37,7 @@ npm install
 
 # 启动开发服务器
 npm run dev
-````
+```
 
 ## 📦 构建
 
@@ -70,7 +69,3 @@ npm run preview
 ## 📄 许可
 
 [MIT](./LICENSE)
-
-```
-
-```
