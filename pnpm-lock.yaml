@@ -19,6 +19,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.10.5
     version: 20.17.19
+  '@types/vue-router':
+    specifier: ^2.0.0
+    version: 2.0.0(vue@3.5.13)
   '@vitejs/plugin-vue':
     specifier: ^4.5.2
     version: 4.6.2(vite@4.5.9)(vue@3.5.13)
@@ -263,6 +266,15 @@ packages:
       undici-types: 6.19.8
     dev: true
 
+  /@types/vue-router@2.0.0(vue@3.5.13):
+    resolution: {integrity: sha512-E454lQ6tp9ftVWdZ8VGZpRcIV4YeqVAcx/uifl3P1GGwscYsxOFdYfgIuKasKO0Fm6Np2JM/L378D3bcRQE9hg==}
+    deprecated: This is a stub types definition for vue-router (https://github.com/vuejs/vue-router). ecmarkup provides its own type definitions, so you don\'t need @types/ecmarkup installed!
+    dependencies:
+      vue-router: 4.5.0(vue@3.5.13)
+    transitivePeerDependencies:
+      - vue
+    dev: true
+
   /@vitejs/plugin-vue@4.6.2(vite@4.5.9)(vue@3.5.13):
     resolution: {integrity: sha512-kqf7SGFoG+80aZG6Pf+gsZIVvGSCKE98JbiWqcCV9cThtg91Jav0yvYFC9Zb+jKetNGF6ZKeoaxgZfND21fWKw==}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -329,7 +341,6 @@ packages:
 
   /@vue/devtools-api@6.6.4:
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
-    dev: false
 
   /@vue/language-core@1.8.27(typescript@5.7.3):
     resolution: {integrity: sha512-L8Kc27VdQserNaCUNiSFdDl9LWT24ly8Hpwf1ECy3aFb9m6bDhBGQYOujDm21N7EW3moKIOKEanQwe1q5BK+mA==}
@@ -591,7 +602,6 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.6.4
       vue: 3.5.13(typescript@5.7.3)
-    dev: false
 
   /vue-template-compiler@2.7.16:
     resolution: {integrity: sha512-AYbUWAJHLGGQM7+cNTELw+KsOG9nl2CnSv467WobS5Cv9uk3wFcnr1Etsz2sEIHEZvw1U+o9mRlEO6QbZvUPGQ==}
