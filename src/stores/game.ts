@@ -41,18 +41,29 @@ export const useGameStore = defineStore("game", {
 
   actions: {
     // 初始化游戏
-    initializeGame(level: string) {
+    initializeGame(
+      level: string | { rows: number; cols: number; mines: number }
+    ) {
       // 根据难度设置游戏参数
-      switch (level) {
-        case "easy":
-          this.difficulty = { rows: 9, cols: 9, mines: 10 };
-          break;
-        case "medium":
-          this.difficulty = { rows: 16, cols: 16, mines: 40 };
-          break;
-        case "hard":
-          this.difficulty = { rows: 16, cols: 30, mines: 99 };
-          break;
+      if (typeof level === "string") {
+        switch (level) {
+          case "easy":
+            this.difficulty = { rows: 9, cols: 9, mines: 10 };
+            break;
+          case "medium":
+            this.difficulty = { rows: 16, cols: 16, mines: 40 };
+            break;
+          case "hard":
+            this.difficulty = { rows: 16, cols: 30, mines: 99 };
+            break;
+        }
+      } else {
+        // 自定义难度
+        this.difficulty = {
+          rows: Math.min(Math.max(level.rows, 10), 16),
+          cols: Math.min(Math.max(level.cols, 10), 30),
+          mines: Math.min(Math.max(level.mines, 10), 99),
+        };
       }
 
       this.createBoard();

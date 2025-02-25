@@ -61,7 +61,7 @@ const store = useGameStore()
 const router = useRouter()
 const route = useRoute()
 const timeSpent = ref(0)
-let timer: number
+let timer: ReturnType<typeof setTimeout>
 
 const startTimer = () => {
   timer = setInterval(() => {
@@ -101,15 +101,27 @@ const handleDoubleClick = (row: number, col: number) => {
   }
 }
 
+const initGame = () => {
+  if (route.query.custom === 'true') {
+    store.initializeGame({
+      rows: Number(route.query.rows),
+      cols: Number(route.query.cols),
+      mines: Number(route.query.mines)
+    })
+  } else {
+    store.initializeGame(route.query.level as string)
+  }
+}
+
 const restartGame = () => {
   clearInterval(timer)
   timeSpent.value = 0
-  store.initializeGame(route.query.level as string)
+  initGame()
   startTimer()
 }
 
 onMounted(() => {
-  store.initializeGame(route.query.level as string)
+  initGame()
   startTimer()
 })
 
