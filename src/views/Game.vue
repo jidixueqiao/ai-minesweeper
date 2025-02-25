@@ -1,5 +1,5 @@
 <template>
-  <div class="game-container">
+  <div class="game-container" @contextmenu.prevent>
     <div class="game-header">
       <div class="mine-count">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -24,7 +24,7 @@
       </button>
     </div>
 
-    <div class="board-wrapper">
+    <div class="board-wrapper" @contextmenu.prevent>
       <div class="board">
         <div class="row" v-for="(row, rowIndex) in store.board" :key="rowIndex">
           <div v-for="(cell, colIndex) in row" :key="colIndex" class="cell" :class="{
