@@ -56,12 +56,18 @@
 import { useGameStore } from '../stores/game'
 import { onMounted, ref, onUnmounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import boomSound from '../assets/sounds/boom.mp3'
 
 const store = useGameStore()
 const router = useRouter()
 const route = useRoute()
 const timeSpent = ref(0)
 let timer: ReturnType<typeof setTimeout>
+const explosionSound = ref<HTMLAudioElement | null>(null)
+
+onMounted(() => {
+  explosionSound.value = new Audio(boomSound)
+})
 
 const startTimer = () => {
   timer = setInterval(() => {
@@ -70,6 +76,13 @@ const startTimer = () => {
 }
 
 const handleClick = (row: number, col: number) => {
+  const cell = store.board[row][col]
+  
+  // 如果是地雷且未被标记，播放爆炸音效
+  if (cell.isMine && !cell.isFlagged && !cell.isRevealed) {
+    explosionSound.value?.play()
+  }
+  
   store.revealCell(row, col)
   if (store.gameOver) {
     clearInterval(timer)
